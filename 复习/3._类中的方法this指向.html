@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3._类中的方法this指向</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            speak() {
+                //speak方法放在了哪里？--类的原型对象上，供实例使用。
+                //通过Person实例调用speak时，speak中的this就是Person实例。
+                console.log(this)
+            }
+        }
+
+        const p1 = new Person('tom', 18)
+        p1.speak()
+
+        const x = p1.speak
+        x()
+    </script>
+</body>
+
+</html>
