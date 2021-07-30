@@ -26,6 +26,7 @@
                 super(props)
                 //初始化状态
                 this.state = { isHot: true, wind: '微风' }
+                //解决changeWeather中this指向问题
                 this.changeWeather = this.changeWeather.bind(this)
             }
             //changeWeather调用了几次？--1+n次 1是初始化的那次，n是状态更新的次数。
