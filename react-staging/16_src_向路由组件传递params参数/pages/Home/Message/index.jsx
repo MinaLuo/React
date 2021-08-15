@@ -16,11 +16,11 @@ export default class Message extends Component {
             <div>
                 <ul>
                     {
-                        messageArr.map(msgObk => {
+                        messageArr.map(msgObj => {
                             return (
-                                <li key={msgObk.id}>
+                                <li key={msgObj.id}>
                                     {/* 向路由组件传递params参数 */}
-                                    <Link to={`/home/message/detail/${msgObk.id}/${msgObk.title}`}>{msgObk.title}</Link>
+                                    <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>
                                 </li>
                             )
                         })

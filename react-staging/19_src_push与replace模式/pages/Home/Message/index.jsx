@@ -16,17 +16,17 @@ export default class Message extends Component {
             <div>
                 <ul>
                     {
-                        messageArr.map(msgObk => {
+                        messageArr.map(msgObj => {
                             return (
-                                <li key={msgObk.id}>
+                                <li key={msgObj.id}>
                                     {/* 向路由组件传递params参数 */}
-                                    {/* <Link to={`/home/message/detail/${msgObk.id}/${msgObk.title}`}>{msgObk.title}</Link> */}
+                                    {/* <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link> */}
 
                                     {/* 向路由组件传递search参数 */}
-                                    {/* <Link to={`/home/message/detail/?id=${msgObk.id}&title=${msgObk.title}`}>{msgObk.title}</Link> */}
+                                    {/* <Link to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link> */}
 
                                     {/* 向路由组件传递state参数 */}
-                                    <Link to={{ pathname: "/home/message/detail", state: { id: msgObk.id, title: msgObk.title } }}>{msgObk.title}</Link>
+                                    <Link replace to={{ pathname: "/home/message/detail", state: { id: msgObj.id, title: msgObj.title } }}>{msgObj.title}</Link>
                                 </li>
                             )
                         })
