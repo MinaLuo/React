@@ -129,4 +129,73 @@
            (2).HashRouter刷新后会导致路由state参数的丢失。！！！
       4.备注：HashRouter可以用于解决一些路径错误相关的问题。
 
+## 十四、antd的按需引入+自定义主题(3.xxx版)
+      1.安装依赖：npm i react-app-rewired customize-cra babel-plugin-import less less-loader
+      2.修改package.json
+          ....
+            "scripts": {
+               "start": "react-app-rewired start",
+               "build": "react-app-rewired build",
+               "test": "react-app-rewired test",
+               "eject": "react-app-rewired eject"
+            },
+          ....  
+      3.根目录下创建config-overrides.js
+            //配置具体的修改规则
+            const { override, fixBabelImports } = require('customize-cra');
+            module.exports = override(
+                  fixBabelImports('import', {
+                        libraryName: 'antd',
+                        libraryDirectory: 'es',
+                        style: true,
+                  }),
+                  addLessLoader({
+                        javascriptEnabled: true,
+                        modifyVars: { '@primary-color': 'green' },
+                  }),
+            );
+      4.备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
+
+## 十四、antd的按需引入+自定义主题(4.xxx版，即现在写的)
+      1.安装依赖 npm i @craco/craco craco-less
+      2.修改 App.js文件
+              import './App.less'
+      3.修改App.less文件
+               @import '~antd/dist/antd.less';
+      4.修改package.json
+          ....
+            "scripts": {
+               "start": "rcraco start",
+               "build": "rcraco build",
+               "test": "rcraco test",
+               "eject": "rcraco eject"
+            },
+          ....  
+            "jest": {
+                  "transformIgnorePatterns": [
+                        "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
+                  ]
+            }
+          ....
+      5.根目录下创建craco.config.js
+           //配置具体的修改规则
+           const CracoLessPlugin = require('craco-less');
+
+            module.exports = {
+            plugins: [
+                  {
+                        plugin: CracoLessPlugin,
+                        options: {
+                        lessLoaderOptions: {
+                              lessOptions: {
+                                    modifyVars: { '@primary-color': 'orange' },
+                                    javascriptEnabled: true,
+                              },
+                        },
+                        },
+                  },
+            ],
+            };
+      6.备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
+
                       

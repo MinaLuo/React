@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { Button, DatePicker } from 'antd';
 import { WechatOutlined, WeiboSquareOutlined, SearchOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
+import './App.less'
 const { RangePicker } = DatePicker;
 
 //创建并暴露App组件
