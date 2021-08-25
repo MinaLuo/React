@@ -7,10 +7,17 @@ export default class Demo extends Component {
     }
 
     add = () => {
-        //1.获取原来的count值
-        const { count } = this.state;
-        //2.更新状态
-        this.setState({ count: count + 1 })
+        //对象式的setState
+        // //1.获取原来的count值
+        // const { count } = this.state;
+        // //2.更新状态
+        // this.setState({ count: count + 1 }, () => {
+        //     console.log(this.state.count, '14行的输出')
+        // })
+        // // console.log(this.state.count, '16行的输出');//0
+
+        //函数式的setState
+        // this.setState(state => ({ count: state.count + 1 }))
     }
 
     render() {
