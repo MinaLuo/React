@@ -18,6 +18,32 @@
     <script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
 
     <script type="text/babel">
+        /*
+        新
+            加载渲染过程：
+            1.父组件constructor
+            2.父组件getDerivedStateFromProps
+            3.父组件render
+            4.子组件constructor
+            5.子组件getDerivedStateFromProps
+            6.子组件render
+            7.子组件componentDidMount
+            8.父组件componentDidMount
+            更新过程：
+            1.父组件getDerivedStateFromProps
+            2.父组件shouldComponentUpdate
+            3.父组件render
+            4.子组件getDerivedStateFromProps
+            5.子组件shouldComponentUpdate
+            6.子组件render
+            7.子组件getSnapshotBeforeUpdate
+            8.父组件getSnapshotBeforeUpdate
+            9.子组件componentDidUpdate
+            10.父组件componentDidUpdate
+            销毁过程：
+            3.父组件componentWillUnmount
+            4.子组件componentWillUnmount
+        */
         //父组件A
         class A extends React.Component {
             constructor(props) {
