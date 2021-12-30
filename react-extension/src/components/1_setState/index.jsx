@@ -17,7 +17,22 @@ export default class Demo extends Component {
         // // console.log(this.state.count, '16行的输出');//0
 
         //函数式的setState
-        this.setState(state => ({ count: state.count + 1 }))
+        // this.setState(state => ({ count: state.count + 1 }))
+        setTimeout(() => {
+            // console.log('点击同步减少前', this.state.count)
+            // // this.setState(state => ({ count: state.count + 1 }))
+            // this.setState({ count: this.state.count + 1 })
+            // console.log('点击同步减少后', this.state.count)
+        })
+
+        new Promise((reslove, reject) => {
+            reslove(1)
+        }).then(() => {
+            console.log('点击同步减少前', this.state.count)
+            // this.setState(state => ({ count: state.count + 1 }))
+            this.setState({ count: this.state.count + 1 })
+            console.log('点击同步减少后', this.state.count)
+        })
     }
 
     render() {
